@@ -7,8 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "POP.h"
 
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UIView *redView;
+
+
 
 @end
 
@@ -16,12 +21,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    //弹力动画
+    POPSpringAnimation *springAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewSize];
+    
+    //起点值
+    springAnim.fromValue = [NSValue valueWithCGSize:CGSizeMake(100, 100)];
+    
+    //终点值
+    springAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(200, 200)];
+    
+    springAnim.dynamicsMass = 5;
+    
+    springAnim.dynamicsFriction=24;
+    
+//    springAnim.dynamicsTension = 200;
+    
+    [self.redView pop_addAnimation:springAnim forKey:@"springAnim"];
 }
+
+
 
 @end

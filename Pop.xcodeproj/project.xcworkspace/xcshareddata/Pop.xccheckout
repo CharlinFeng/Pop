@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>D6F1BA36-20E4-4A54-9865-FAEF625FA1F2</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Pop</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>43049ED29FAB6BF82C644D79693977DEB40D98B0</key>
 		<string>https://github.com/nsdictionary/Pop.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Pop.xcodeproj/project.xcworkspace</string>
+	<string>Pop.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>43049ED29FAB6BF82C644D79693977DEB40D98B0</key>

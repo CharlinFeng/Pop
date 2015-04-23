@@ -7,12 +7,13 @@
 //
 
 #import "ViewController.h"
-#import "POP.h"
+#import "NSObject+Pop.h"
 
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *redView;
 
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 
 @end
@@ -24,23 +25,31 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    //弹力动画
-    POPSpringAnimation *springAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewSize];
-    
-    //起点值
-    springAnim.fromValue = [NSValue valueWithCGSize:CGSizeMake(100, 100)];
-    
-    //终点值
-    springAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(200, 200)];
-    
-    springAnim.dynamicsMass = 5;
-    
-    springAnim.dynamicsFriction=24;
-    
-//    springAnim.dynamicsTension = 200;
-    
-    [self.redView pop_addAnimation:springAnim forKey:@"springAnim"];
+
+
+    [self.redView pop_anim:PopAnimTypeBasic propertyType:PopAnimPropertyTypeCustom paramModelBlock:^PopAnimParamModel *{
+
+        PopAnimParamModel *paramModel = [[PopAnimParamModel alloc] init];
+        
+        paramModel.fromValue=@(0);
+        paramModel.toValue=@(50);
+        
+        paramModel.duration=5;
+        
+        paramModel.writeBlock=^(id obj,const CGFloat values[]){
+
+            _countLabel.text = [NSString stringWithFormat:@"%@",@(values[0])];
+        };
+
+
+        paramModel.readBlock=^(id obj,CGFloat values[]){
+
+            values[0] =[_countLabel.text floatValue];
+        };
+
+        return paramModel;
+    }];
+
 }
 
 

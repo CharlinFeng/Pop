@@ -32,15 +32,19 @@
             
             NSLog(@"错误：请传入属性的读或写block");return nil;
         }
-    }
-    
-    if(PopAnimPropertyTypeCustom == propertyType || PopAnimTypeBasic == animType){
         
         if(paramModel.fromValue==nil || paramModel.toValue==nil){
             
             NSLog(@"错误：请传入属性的起点值或终点值");return nil;
         }
+    }
+    
+    if(PopAnimTypeBasic == animType && PopAnimPropertyTypeNormal == propertyType){
         
+        if(paramModel.toValue==nil){
+            
+            NSLog(@"错误：请传入属性的终点值");return nil;
+        }
     }
     
     POPAnimation *popAnim = nil;
